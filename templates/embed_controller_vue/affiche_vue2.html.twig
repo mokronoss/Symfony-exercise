@@ -1,0 +1,14 @@
+{% extends 'base_embed.html.twig' %}
+
+
+{% block body %}
+<div style="border: 1px solid black; width:300px height:400px;">
+je suis le div dans la vue 2</div>
+
+{# incruster l'action d'un controlleur  #}
+<div style="display:inline-block; float:right; width:300px; height:400px;  border: 1px solid black">
+{{ render (controller ('App\\Controller\\EmbedControllerVueController::donneesDynamique' , {'nombreVilles' : 4} ))}}</div>
+{% endblock %}
+
+{# {'nombreVilles ': 1} c'est un parametre #}
+{% endblock %}

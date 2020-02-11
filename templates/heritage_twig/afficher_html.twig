@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+afficher
+{% endblock %}
+
+{% block body %}
+afficher
+{% endblock %}
+
+{# ex: remplir un block dans les vues qui ete vide dans le template base #}
+{% block codejs %}
+<script>
+    let tab = [1,2,3];
+    for(let i of tab){
+        console.log(i);
+    }
+</script>
+{% endblock %}
+
+{# ex: remplir un contenue du template de base qui nous interesse pas dans cette vue #}
+{# on fait le script dans la base et dans les vue que l'on ne veut pas - on le mets a vide #}
+{% block extrajs %}
+{% endblock %}
