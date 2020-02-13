@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EmbedApiController extends AbstractController
 {
@@ -15,7 +16,17 @@ class EmbedApiController extends AbstractController
      //action
     public function afficherVue1()
     {
-        return $this->render('embed_api/affiche_vue1_api.html.twig');
+                // https://api.chucknorris.io/jokes/random
+
+                $client = HttpClient::create();
+                $response = $client->request("GET", "https://api.chucknorris.io/jokes/random");
+                $phrase = $response->toArray()['value'];
+        
+                return $this->render(
+                    'embed_api/affiche_vue1_api.html.twig',
+                    ['phrase' => $phrase]
+                );
+       
     }
 
     /**
