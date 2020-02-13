@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Services\Bonjour;
 use App\Services\ChuckyApi;
+use App\Services\ChuckyLogger;
+use App\Services\IrailApi;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,7 +23,7 @@ class ServicesExemplesController extends AbstractController
     }
 
     /**
-     * @Route("/services/exemples/Bonjour", name="services_exemples")
+     * @Route("/services/exemples/Bonjour", name="services_exemples_Bonjour")
      */
     public function utiliseBonjour(Bonjour $objBonjour)
     {
@@ -30,7 +32,7 @@ class ServicesExemplesController extends AbstractController
     }
 
     /**
-     * @Route("/services/exemples/ChuckyApi", name="services_exemples")
+     * @Route("/services/exemples/ChuckyApi", name="services_exemples_Chucky")
      */
     public function utiliseChuckyApi(ChuckyApi $objChuckyApi)
     {
@@ -40,4 +42,18 @@ class ServicesExemplesController extends AbstractController
             ['msg' => $msg]
         );
     }
+
+    /**
+     * @Route("/services/exemples/ChuckyLogger", name="services_exemples_Chucky")
+     */
+    public function utiliseChuckyLogger(ChuckyLogger $objetChuckyLogger)
+    {
+        $msg = $objetChuckyLogger->getPhrase();
+        return $this->render('exemples_services/utilise_chucky_logger.html.twig', ['msg' => $msg]);
+    }
+
+    public function utiliseIrail(IrailApi $objIrail){
+        
+
+    } 
 }
